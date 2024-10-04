@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://8lx2xy4rdnuy"]
+
+[ext_resource type="Script" path="res://Scripts/spikey.gd" id="1_f4w3l"]
+[ext_resource type="Texture2D" uid="uid://d28pjdwp8e21b" path="res://Sprites/Enemies/Spiker.png" id="1_utptl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gliba"]
+atlas = ExtResource("1_utptl")
+region = Rect2(0, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26fc2"]
+atlas = ExtResource("1_utptl")
+region = Rect2(60, 0, 60, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2nngb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gliba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gliba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gliba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gliba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26fc2")
+}],
+"loop": true,
+"name": &"Blink",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f34nq"]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uf0qf"]
+radius = 31.0644
+
+[node name="Spikey" type="CharacterBody2D" groups=["Enemies"]]
+motion_mode = 1
+script = ExtResource("1_f4w3l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2nngb")
+animation = &"Blink"
+autoplay = "Blink"
+frame = 1
+frame_progress = 0.0590627
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_f34nq")
+
+[node name="PlayerKill" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerKill"]
+shape = SubResource("CircleShape2D_uf0qf")
+debug_color = Color(1, 0.00584033, 0.0581184, 0.42)
+
+[connection signal="body_entered" from="PlayerKill" to="." method="_on_player_kill_body_entered"]

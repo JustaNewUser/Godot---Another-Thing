@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b3yj65ex7wbii"
+path="res://.godot/imported/Deep Urban by Eugenio Mininni.mp3-aecc5c584ca19378db38d15f1d435be5.mp3str"
+
+[deps]
+
+source_file="res://Music/Deep Urban by Eugenio Mininni.mp3"
+dest_files=["res://.godot/imported/Deep Urban by Eugenio Mininni.mp3-aecc5c584ca19378db38d15f1d435be5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

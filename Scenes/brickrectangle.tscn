@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl48egsptp5qk"]
+
+[ext_resource type="Texture2D" uid="uid://bm7mkcsmoqpoi" path="res://Sprites/Assets - Brick Breakout/Brick - Rectangle.png" id="1_p0ghy"]
+[ext_resource type="Script" path="res://Scripts/brickrectangle.gd" id="1_ra1t3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdmb7"]
+size = Vector2(114, 30)
+
+[node name="Brickrectangle" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_ra1t3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_p0ghy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hdmb7")

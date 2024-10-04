@@ -1,0 +1,107 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfnb0nqiw81o1"]
+
+[ext_resource type="Texture2D" uid="uid://brwfy4dlchgxa" path="res://Sprites/Assets - Level Select/Basic Menu.png" id="1_46mbc"]
+[ext_resource type="Script" path="res://Scripts/Level Select/level_select.gd" id="1_ciwbs"]
+[ext_resource type="Texture2D" uid="uid://cf2u22yy02ccd" path="res://Sprites/BGs/BG3.png" id="1_gdcu6"]
+[ext_resource type="Texture2D" uid="uid://s7u4jb5htolg" path="res://Sprites/Assets - Level Select/Basic Left Arrow.png" id="2_tyu5r"]
+[ext_resource type="Texture2D" uid="uid://cfipwlpslmu0s" path="res://Sprites/Assets - Level Select/Basic Right Arrow.png" id="3_5rnmj"]
+[ext_resource type="PackedScene" uid="uid://dd6ebeqjd100x" path="res://Scripts/Level Select/grid_container.tscn" id="3_rwmmv"]
+
+[node name="Level Select" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ciwbs")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_gdcu6")
+expand_mode = 1
+
+[node name="Level Menu" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -410.0
+offset_top = -296.0
+offset_right = 409.0
+offset_bottom = 296.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_46mbc")
+
+[node name="Back Button" type="TextureButton" parent="Level Menu"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -32.0
+offset_right = 54.0
+offset_bottom = 32.0
+grow_vertical = 2
+texture_normal = ExtResource("2_tyu5r")
+
+[node name="Control" type="Control" parent="Level Menu"]
+clip_contents = true
+custom_minimum_size = Vector2(647, 460)
+layout_mode = 1
+anchor_left = 0.105
+anchor_top = 0.111
+anchor_right = 0.895
+anchor_bottom = 0.889
+offset_left = 0.00499725
+offset_top = 0.287994
+offset_right = -0.00500488
+offset_bottom = -0.288025
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelGrid" type="BoxContainer" parent="Level Menu/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(651, 462)
+layout_mode = 0
+offset_right = 1298.0
+offset_bottom = 460.0
+
+[node name="GridContainer" parent="Level Menu/Control/LevelGrid" instance=ExtResource("3_rwmmv")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GridContainer2" parent="Level Menu/Control/LevelGrid" instance=ExtResource("3_rwmmv")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GridContainer3" parent="Level Menu/Control/LevelGrid" instance=ExtResource("3_rwmmv")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Next Button" type="TextureButton" parent="Level Menu"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -32.0
+offset_right = 10.0
+offset_bottom = 32.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("3_5rnmj")
+
+[connection signal="pressed" from="Level Menu/Back Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Level Menu/Next Button" to="." method="_on_next_button_pressed"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfb8mpfpt8jk0"]
+
+[ext_resource type="Texture2D" uid="uid://iawfdqyfptg4" path="res://Sprites/NPCs/Sporey.png" id="1_u2ae3"]
+[ext_resource type="Script" path="res://Scripts/NPC.gd" id="2_k7nq6"]
+[ext_resource type="PackedScene" uid="uid://b7y5a7xirhtnx" path="res://Scenes/interactive_area.tscn" id="3_jk48h"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ecisb"]
+radius = 20.0
+height = 66.0
+
+[node name="NPC" type="Sprite2D"]
+position = Vector2(671, 604)
+texture = ExtResource("1_u2ae3")
+script = ExtResource("2_k7nq6")
+
+[node name="InteractiveArea" parent="." instance=ExtResource("3_jk48h")]
+action = "Test"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveArea"]
+shape = SubResource("CapsuleShape2D_ecisb")

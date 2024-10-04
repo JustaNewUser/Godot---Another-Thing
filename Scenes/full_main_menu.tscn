@@ -1,0 +1,292 @@
+[gd_scene load_steps=8 format=3 uid="uid://cdfds7263m5r"]
+
+[ext_resource type="Script" path="res://Scripts/Full Main Menu Scripts/Options.gd" id="1_h0lqf"]
+[ext_resource type="Script" path="res://Scripts/Full Main Menu Scripts/Video.gd" id="1_kut1f"]
+[ext_resource type="Script" path="res://Scripts/Full Main Menu Scripts/Start.gd" id="1_lqe7x"]
+[ext_resource type="Script" path="res://Scripts/Full Main Menu Scripts/Audio.gd" id="2_o6s7c"]
+[ext_resource type="Script" path="res://Scripts/Full Main Menu Scripts/Quit.gd" id="2_t5imf"]
+[ext_resource type="PackedScene" uid="uid://duaffe8p6indm" path="res://Scripts/Full Main Menu Scripts/settings_action_button.tscn" id="3_gj4mv"]
+[ext_resource type="Script" path="res://Scripts/Full Main Menu Scripts/Back.gd" id="3_v7a03"]
+
+[node name="Full Main Menu" type="Node2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" type="VBoxContainer" parent="UI"]
+unique_name_in_owner = true
+offset_left = 221.0
+offset_top = 510.0
+offset_right = 70.0
+offset_bottom = 125.0
+
+[node name="Start" type="Button" parent="UI/MainMenu"]
+layout_mode = 2
+text = "Start"
+script = ExtResource("1_lqe7x")
+
+[node name="Options" type="Button" parent="UI/MainMenu"]
+layout_mode = 2
+text = "Options"
+script = ExtResource("1_h0lqf")
+
+[node name="Quit" type="Button" parent="UI/MainMenu"]
+layout_mode = 2
+text = "Quit"
+script = ExtResource("2_t5imf")
+
+[node name="Settings" type="TabContainer" parent="UI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Video" type="TabBar" parent="UI/Settings"]
+layout_mode = 2
+script = ExtResource("1_kut1f")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Settings/Video"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.5
+offset_top = -43.5
+offset_right = 99.5
+offset_bottom = 43.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Settings/Video/HBoxContainer"]
+layout_mode = 2
+
+[node name="FullScreen" type="Label" parent="UI/Settings/Video/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "FullScreen"
+
+[node name="Borderless" type="Label" parent="UI/Settings/Video/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Borderless"
+
+[node name="VSync" type="Label" parent="UI/Settings/Video/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Vsync"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/Settings/Video/HBoxContainer"]
+layout_mode = 2
+
+[node name="FullScreen" type="CheckBox" parent="UI/Settings/Video/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 7
+
+[node name="Borderless" type="CheckBox" parent="UI/Settings/Video/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 7
+
+[node name="VSync" type="OptionButton" parent="UI/Settings/Video/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 7
+item_count = 4
+selected = 1
+popup/item_0/text = "Disabled"
+popup/item_0/id = 0
+popup/item_1/text = "Enabled"
+popup/item_1/id = 1
+popup/item_2/text = "Adaptive"
+popup/item_2/id = 2
+popup/item_3/text = "Mailbox"
+popup/item_3/id = 3
+
+[node name="Back" type="Button" parent="UI/Settings/Video"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Back to Menu"
+script = ExtResource("3_v7a03")
+
+[node name="Audio" type="TabBar" parent="UI/Settings"]
+visible = false
+layout_mode = 2
+script = ExtResource("2_o6s7c")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Settings/Audio"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.5
+offset_top = -43.0
+offset_right = 79.5
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Settings/Audio/HBoxContainer"]
+layout_mode = 2
+
+[node name="Master" type="Label" parent="UI/Settings/Audio/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Master"
+
+[node name="Music" type="Label" parent="UI/Settings/Audio/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Music"
+
+[node name="SFX" type="Label" parent="UI/Settings/Audio/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "SFX"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/Settings/Audio/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Master" type="HSlider" parent="UI/Settings/Audio/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.05
+
+[node name="Music" type="HSlider" parent="UI/Settings/Audio/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.05
+
+[node name="SFX" type="HSlider" parent="UI/Settings/Audio/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.05
+
+[node name="Back" type="Button" parent="UI/Settings/Audio"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Back to Menu"
+script = ExtResource("3_v7a03")
+
+[node name="Controls" type="TabBar" parent="UI/Settings"]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Settings/Controls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.5
+offset_top = -58.0
+offset_right = 24.5
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Settings/Controls/HBoxContainer"]
+layout_mode = 2
+
+[node name="Up" type="Label" parent="UI/Settings/Controls/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Up"
+
+[node name="Down" type="Label" parent="UI/Settings/Controls/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Down"
+
+[node name="Left" type="Label" parent="UI/Settings/Controls/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Left"
+
+[node name="Right" type="Label" parent="UI/Settings/Controls/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Right"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/Settings/Controls/HBoxContainer"]
+layout_mode = 2
+
+[node name="SettingsActionButton" parent="UI/Settings/Controls/HBoxContainer/VBoxContainer2" instance=ExtResource("3_gj4mv")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 7
+
+[node name="SettingsActionButton2" parent="UI/Settings/Controls/HBoxContainer/VBoxContainer2" instance=ExtResource("3_gj4mv")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 7
+action = "ui_down"
+
+[node name="SettingsActionButton3" parent="UI/Settings/Controls/HBoxContainer/VBoxContainer2" instance=ExtResource("3_gj4mv")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 7
+action = "ui_left"
+
+[node name="SettingsActionButton4" parent="UI/Settings/Controls/HBoxContainer/VBoxContainer2" instance=ExtResource("3_gj4mv")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 7
+action = "ui_right"
+
+[node name="Back" type="Button" parent="UI/Settings/Controls"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Back to Menu"
+script = ExtResource("3_v7a03")
+
+[connection signal="pressed" from="UI/MainMenu/Start" to="UI/MainMenu/Start" method="_on_pressed"]
+[connection signal="pressed" from="UI/MainMenu/Options" to="UI/MainMenu/Options" method="_on_pressed"]
+[connection signal="pressed" from="UI/MainMenu/Quit" to="UI/MainMenu/Quit" method="_on_pressed"]
+[connection signal="toggled" from="UI/Settings/Video/HBoxContainer/VBoxContainer2/FullScreen" to="UI/Settings/Video" method="_on_full_screen_toggled"]
+[connection signal="toggled" from="UI/Settings/Video/HBoxContainer/VBoxContainer2/Borderless" to="UI/Settings/Video" method="_on_borderless_toggled"]
+[connection signal="item_selected" from="UI/Settings/Video/HBoxContainer/VBoxContainer2/VSync" to="UI/Settings/Video" method="_on_v_sync_item_selected"]
+[connection signal="pressed" from="UI/Settings/Video/Back" to="UI/Settings/Video/Back" method="_on_pressed"]
+[connection signal="value_changed" from="UI/Settings/Audio/HBoxContainer/VBoxContainer2/Master" to="UI/Settings/Audio" method="_on_master_value_changed"]
+[connection signal="value_changed" from="UI/Settings/Audio/HBoxContainer/VBoxContainer2/Music" to="UI/Settings/Audio" method="_on_music_value_changed"]
+[connection signal="value_changed" from="UI/Settings/Audio/HBoxContainer/VBoxContainer2/SFX" to="UI/Settings/Audio" method="_on_sfx_value_changed"]
+[connection signal="pressed" from="UI/Settings/Audio/Back" to="UI/Settings/Audio/Back" method="_on_pressed"]
+[connection signal="pressed" from="UI/Settings/Controls/Back" to="UI/Settings/Controls/Back" method="_on_pressed"]

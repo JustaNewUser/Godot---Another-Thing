@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://br1xifhqgjgdw"]
+
+[ext_resource type="Texture2D" uid="uid://b8yqauxa52ub6" path="res://Sprites/BGs/Grass Fields WIP.png" id="1_5xwpg"]
+[ext_resource type="PackedScene" uid="uid://dus84ymevy4wn" path="res://Scenes/test_scene.tscn" id="3_x4dsm"]
+[ext_resource type="PackedScene" uid="uid://db04bmxj875t0" path="res://Scenes/player.tscn" id="4_sa72t"]
+[ext_resource type="PackedScene" uid="uid://wsonyro0gwng" path="res://Scenes/Menus/hud.tscn" id="5_1l606"]
+[ext_resource type="PackedScene" uid="uid://bi033252e6kg2" path="res://Scenes/Menus/game_over_screen.tscn" id="5_edwuu"]
+[ext_resource type="PackedScene" uid="uid://d1xtj6bg07p0x" path="res://Scenes/slime.tscn" id="5_m1f0t"]
+[ext_resource type="PackedScene" uid="uid://b2gjib50qtyo0" path="res://Scenes/enemy_spawner.tscn" id="7_y6xvr"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d10ml"]
+
+[node name="Level 5" type="Node2D"]
+
+[node name="Level" type="Node2D" parent="."]
+
+[node name="GrassFieldsWip" type="Sprite2D" parent="Level"]
+texture_filter = 1
+position = Vector2(853.6, 266)
+scale = Vector2(4.44583, 4.44583)
+texture = ExtResource("1_5xwpg")
+
+[node name="Test Scene" parent="Level" instance=ExtResource("3_x4dsm")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level"]
+position = Vector2(553, 581)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D"]
+position = Vector2(0, 7)
+shape = SubResource("WorldBoundaryShape2D_d10ml")
+
+[node name="HUD" parent="Level" instance=ExtResource("5_1l606")]
+
+[node name="EnemySpawner" parent="Level" instance=ExtResource("7_y6xvr")]
+scale = Vector2(2, 2)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Slime" parent="Enemies" instance=ExtResource("5_m1f0t")]
+texture_filter = 1
+position = Vector2(533, 426)
+scale = Vector2(2, 2)
+
+[node name="PlayerBody" parent="." instance=ExtResource("4_sa72t")]
+position = Vector2(266, 364)
+
+[node name="Game Over Screen" parent="." instance=ExtResource("5_edwuu")]

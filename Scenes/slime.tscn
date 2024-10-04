@@ -1,0 +1,118 @@
+[gd_scene load_steps=14 format=3 uid="uid://d1xtj6bg07p0x"]
+
+[ext_resource type="Texture2D" uid="uid://cc2a05txevou1" path="res://Sprites/Enemies/Slime.png" id="1_t0pey"]
+[ext_resource type="Script" path="res://Scripts/slime.gd" id="1_y77i7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih0lo"]
+atlas = ExtResource("1_t0pey")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm2po"]
+atlas = ExtResource("1_t0pey")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqg2r"]
+atlas = ExtResource("1_t0pey")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kloy7"]
+atlas = ExtResource("1_t0pey")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5iyu1"]
+atlas = ExtResource("1_t0pey")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yb3ou"]
+atlas = ExtResource("1_t0pey")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b4xkm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ih0lo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ih0lo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm2po")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm2po")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqg2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm2po")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kloy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5iyu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yb3ou")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddtsa"]
+size = Vector2(10, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u7hk4"]
+radius = 85.0059
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0duo"]
+size = Vector2(10, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ribbv"]
+size = Vector2(12, 8)
+
+[node name="Slime" type="CharacterBody2D" groups=["Enemies"]]
+script = ExtResource("1_y77i7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_b4xkm")
+animation = &"Move"
+autoplay = "Idle"
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_ddtsa")
+
+[node name="Reach" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reach"]
+shape = SubResource("CircleShape2D_u7hk4")
+
+[node name="DeathHitbox" type="Area2D" parent="."]
+position = Vector2(0, -3)
+
+[node name="Area" type="CollisionShape2D" parent="DeathHitbox"]
+shape = SubResource("RectangleShape2D_q0duo")
+debug_color = Color(0.951087, 0.222718, 0, 0.42)
+
+[node name="PlayerKill" type="Area2D" parent="."]
+position = Vector2(0, -3)
+
+[node name="Area" type="CollisionShape2D" parent="PlayerKill"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_ribbv")
+debug_color = Color(0.951087, 0.222718, 0, 0.42)
+
+[connection signal="body_entered" from="Reach" to="." method="_on_reach_body_entered"]
+[connection signal="body_exited" from="Reach" to="." method="_on_reach_body_exited"]
+[connection signal="body_entered" from="DeathHitbox" to="." method="_on_death_hitbox_body_entered"]
+[connection signal="body_entered" from="PlayerKill" to="." method="_on_player_kill_body_entered"]

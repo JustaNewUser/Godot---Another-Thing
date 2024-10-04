@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bl63hn5g2cjth"]
+
+[ext_resource type="PackedScene" uid="uid://dus84ymevy4wn" path="res://Scenes/test_scene.tscn" id="1_ht12w"]
+[ext_resource type="PackedScene" uid="uid://db04bmxj875t0" path="res://Scenes/player.tscn" id="2_o7mdl"]
+[ext_resource type="PackedScene" uid="uid://dsub2jnadw5jt" path="res://Scenes/parallax.tscn" id="4_n73m3"]
+[ext_resource type="PackedScene" uid="uid://bl48egsptp5qk" path="res://Scenes/brickrectangle.tscn" id="4_qg8jh"]
+
+[node name="Level 3" type="Node2D"]
+
+[node name="Test Scene" parent="." instance=ExtResource("1_ht12w")]
+position = Vector2(1, -3)
+
+[node name="PlayerBody" parent="." instance=ExtResource("2_o7mdl")]
+position = Vector2(272, 107)
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("4_n73m3")]
+
+[node name="Brickrectangle" parent="." instance=ExtResource("4_qg8jh")]
+position = Vector2(69, 399)
+
+[node name="Brickrectangle2" parent="." instance=ExtResource("4_qg8jh")]
+position = Vector2(182, 399)
+
+[node name="Brickrectangle3" parent="." instance=ExtResource("4_qg8jh")]
+position = Vector2(297, 399)
+
+[node name="Brickrectangle4" parent="." instance=ExtResource("4_qg8jh")]
+position = Vector2(410, 399)
+
+[node name="Brickrectangle5" parent="." instance=ExtResource("4_qg8jh")]
+position = Vector2(523, 399)
+
+[node name="Brickrectangle6" parent="." instance=ExtResource("4_qg8jh")]
+position = Vector2(636, 399)
+
+[node name="Brickrectangle7" parent="." instance=ExtResource("4_qg8jh")]
+position = Vector2(749, 399)
+
+[node name="Brickrectangle8" parent="." instance=ExtResource("4_qg8jh")]
+position = Vector2(862, 399)
+
+[node name="Brickrectangle9" parent="." instance=ExtResource("4_qg8jh")]
+position = Vector2(975, 399)
+
+[node name="Brickrectangle10" parent="." instance=ExtResource("4_qg8jh")]
+position = Vector2(1088, 399)

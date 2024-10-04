@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckia7ied2584l"]
+
+[ext_resource type="Script" path="res://Scripts/Paddle.gd" id="1_wd04i"]
+[ext_resource type="Texture2D" uid="uid://db8c5thghlc64" path="res://Sprites/Assets - Brick Breakout/Player.png" id="2_ahnlf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yootd"]
+size = Vector2(138, 18)
+
+[node name="Paddle" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_wd04i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_ahnlf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yootd")

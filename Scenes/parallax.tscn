@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsub2jnadw5jt"]
+
+[ext_resource type="Script" path="res://Scripts/parallax.gd" id="1_m2x2v"]
+[ext_resource type="Texture2D" uid="uid://4axivrwxes4h" path="res://Sprites/BGs/Grass Fields Bg.png" id="1_vfb58"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource("1_m2x2v")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1158, 0)
+
+[node name="GrassFieldsBg" type="Sprite2D" parent="ParallaxLayer"]
+texture_filter = 1
+position = Vector2(579.2, 303)
+scale = Vector2(3.01667, 3.01667)
+texture = ExtResource("1_vfb58")

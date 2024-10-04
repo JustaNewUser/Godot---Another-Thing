@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dus84ymevy4wn"]
+
+[ext_resource type="PackedScene" uid="uid://dp40kqqjeuod7" path="res://Scenes/ball.tscn" id="1_ai3b5"]
+[ext_resource type="Script" path="res://Scripts/test_scene.gd" id="1_py0wr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i86j4"]
+size = Vector2(20, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yu2l5"]
+size = Vector2(20, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8utm1"]
+size = Vector2(1152, 24)
+
+[node name="Test Scene" type="Node2D"]
+script = ExtResource("1_py0wr")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 324)
+shape = SubResource("RectangleShape2D_i86j4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1152, 324)
+shape = SubResource("RectangleShape2D_yu2l5")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576, 0)
+shape = SubResource("RectangleShape2D_8utm1")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576, 648)
+shape = SubResource("RectangleShape2D_8utm1")
+
+[node name="Ball" parent="." instance=ExtResource("1_ai3b5")]
+position = Vector2(224, 168)
+
+[node name="Return" type="Button" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 128.0
+offset_bottom = 72.0
+text = "Return"
+
+[connection signal="pressed" from="Return" to="." method="_on_button_pressed"]
